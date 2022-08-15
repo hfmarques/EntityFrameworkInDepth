@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CodeFirst
+namespace DbFirst
 {
-    public partial class Author
+    public partial class Tag
     {
-        public Author()
+        public Tag()
         {
             Courses = new HashSet<Course>();
         }
 
-        public int AuthorId { get; set; }
+        public int TagId { get; set; }
         public string Name { get; set; } = null!;
 
         public virtual ICollection<Course> Courses { get; set; }

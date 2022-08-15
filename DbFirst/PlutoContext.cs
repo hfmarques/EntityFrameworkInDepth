@@ -1,17 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace CodeFirst
+namespace DbFirst
 {
-    public partial class PlutoDbContext : DbContext
+    public partial class PlutoContext : DbContext
     {
         private readonly string connectionString;
 
-        public PlutoDbContext(string connectionString)
+        public PlutoContext(string connectionString)
         {
             this.connectionString = connectionString;
         }
 
-        public PlutoDbContext(DbContextOptions<PlutoDbContext> options, string connectionString)
+        public PlutoContext(DbContextOptions<PlutoContext> options, string connectionString)
             : base(options)
         {
             this.connectionString = connectionString;
@@ -23,6 +23,7 @@ namespace CodeFirst
         public virtual DbSet<Post> Posts { get; set; } = null!;
         public virtual DbSet<Tag> Tags { get; set; } = null!;
         public virtual DbSet<TblUser> TblUsers { get; set; } = null!;
+        public virtual DbSet<UserProfile> UserProfiles { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

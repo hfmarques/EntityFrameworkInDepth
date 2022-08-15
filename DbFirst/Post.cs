@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CodeFirst
+namespace DbFirst
 {
     public partial class Post
     {

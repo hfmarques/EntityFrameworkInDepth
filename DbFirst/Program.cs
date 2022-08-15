@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using CodeFirst;
+using DbFirst;
 using Microsoft.Extensions.Configuration;
 
 var configuration = new ConfigurationBuilder()
@@ -12,7 +12,7 @@ var connectionString = configuration.GetConnectionString("Pluto");
 
 Console.WriteLine(connectionString);
 
-using var context = new PlutoDbContext(connectionString);
+using var context = new PlutoContext(connectionString);
 
 var authors = context.Authors.ToList();
 
