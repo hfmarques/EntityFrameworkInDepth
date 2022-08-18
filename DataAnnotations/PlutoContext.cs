@@ -4,10 +4,6 @@ namespace DataAnnotations
 {
     public class PlutoContext : DbContext
     {
-        public PlutoContext()
-        {
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
