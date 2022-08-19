@@ -1,4 +1,5 @@
-﻿using FluentApi.Models;
+﻿using FluentApi.EntityConfigurations;
+using FluentApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FluentApi
@@ -21,19 +22,7 @@ namespace FluentApi
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Course>(c =>
-            {
-                c.Property(x => x.Name).IsRequired().HasMaxLength(255);
-                c.Property(x => x.Description).IsRequired().HasMaxLength(255);
-                c.HasOne(x => x.Cover)
-                    .WithOne(x => x.Course)
-                    .HasForeignKey<Cover>(x => x.CourseId);
-                c.HasOne(x => x.Author)
-                    .WithMany(x => x.Courses);
-                c.HasMany(x => x.Tags)
-                    .WithMany(x => x.Courses)
-                    .UsingEntity(x => x.ToTable("CourseTags"));
-            });
+            modelBuilder.ApplyConfiguration(new CourseConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FluentApi.Migrations
 {
     [DbContext(typeof(PlutoContext))]
-    [Migration("20220818175653_Initial")]
+    [Migration("20220819161840_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
