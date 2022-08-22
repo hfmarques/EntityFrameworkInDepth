@@ -16,6 +16,6 @@
         public virtual Author Author { get; set; }
 
         public virtual Cover Cover { get; set; }
-        public virtual IQueryable<Tag> Tags { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

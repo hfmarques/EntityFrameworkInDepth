@@ -1,25 +1,32 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Queries.EntityConfigurations;
-using Queries.Models;
+using PatternsApi.Data.EntityConfigurations;
+using PatternsApi.Models;
 
-namespace Queries
+namespace PatternsApi.Data
 {
     public class PlutoContext : DbContext
     {
+        private readonly string connectionString;
+
+        public PlutoContext(IConfiguration configuration)
+        {
+            connectionString = configuration.GetConnectionString("Pluto");
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(
-                    "Server=tcp:estudos-heber.database.windows.net,1433;Initial Catalog=Pluto;Persist Security Info=False;User ID=master;Password=qUqw4f2Js!kqYoV;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-                // "Server={server};Initial Catalog={database};Persist Security Info=False;User ID={user};Password={password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer(connectionString);
             }
         }
 
+#nullable disable
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<Cover> Covers { get; set; }
+#nullable enable
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
