@@ -6,6 +6,6 @@
 
         public string Name { get; set; }
 
-        public List<Course> Courses { get; set; }
+        public virtual IQueryable<Course> Courses { get; set; }
     }
 }

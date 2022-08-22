@@ -87,4 +87,15 @@ foreach (var course in query5)
 
 Console.WriteLine();
 
+var query6 = context.Courses.Include(x => x.Author);
+
+foreach (var course in query6)
+{
+    Console.WriteLine($"{course.Name} - {course.Author.Name}");
+}
+
+Console.WriteLine();
+
+
+
 Console.ReadLine();

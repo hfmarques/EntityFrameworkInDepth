@@ -13,9 +13,9 @@
         public float FullPrice { get; set; }
         public int AuthorId { get; set; }
 
-        public Author Author { get; set; }
+        public virtual Author Author { get; set; }
 
-        public Cover Cover { get; set; }
-        public List<Tag> Tags { get; set; }
+        public virtual Cover Cover { get; set; }
+        public virtual IQueryable<Tag> Tags { get; set; }
     }
 }
